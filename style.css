@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+body {
+    /* Reemplazamos el color sólido con un degradado radial */
+    /* Que va del centro (un morado neón #A020F0) hacia los bordes (negro #000) */
+    /* Ajustamos el degradado para que el negro se pegue más a los bordes */
+    background-image: radial-gradient(circle at center, #A020F0 0%, #000 100%);
+    /* Aseguramos que el degradado cubra toda la pantalla */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+    margin: 0;
+    /* padding: 0; */ /* Original padding */
+    color: white; /* Aseguramos que el texto sea visible */
+    font-family: 'Arial', sans-serif; /* Fuente simple */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Removed justify-content: center; */ /* This was centering content vertically */
+    min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
+    overflow-y: auto; /* Add scroll if content exceeds height */
+    padding-top: 15vh; /* Add padding to the top to push content down from the top edge */
+    box-sizing: border-box; /* Include padding in the element's total height */
+}
+
+/* Estilo básico para la imagen */
+img {
+    max-width: 20%; /* Reduce la imagen */
+    max-height: 20vh; /* Reduce la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina el espacio extra debajo de la imagen */
+    /* La imagen ya estará centrada horizontal y verticalmente por el flexbox del body */
+    /* Añadimos un borde sutil y una sombra para suavizar el corte con el fondo */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Borde blanco semitransparente */
+    box-shadow: 0 0 10px 3px rgba(160, 32, 240, 0.5); /* Sombra/resplandor morado neón sutil */
+    /* Redondeamos las esquinas de la imagen */
+    border-radius: 20px; /* Ajusta el valor según la intensidad de redondeo deseada */
+
+    /* Añadir transición para el efecto hover y la animación de entrada */
+    /* Apply transition to properties that change during hover and entry */
+    transition: transform 0.6s ease-out, box-shadow 0.3s ease-in-out, opacity 0.6s ease-out; /* Unified transform duration for entry */
+
+
+    transform-origin: center bottom; /* Hacemos que el brinco se vea como si saliera del suelo */
+
+    /* Mover la imagen ligeramente hacia arriba */
+    /* margin-top: -350px; Removido para bajar todo */
+    /* Añadimos margen inferior para separar la imagen del texto */
+    margin-bottom: 20px;
+
+    /* Initial state for entry animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Efecto hover: un mini brinco y un resplandor un poco más intenso */
+img:hover {
+    transform: translateY(-15px) scale(1.02); /* Mueve ligeramente hacia arriba y escala un poco */
+    box-shadow: 0 0 20px 5px rgba(160, 32, 240, 0.8); /* Aumenta la intensidad de la sombra */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Faster transition for hover */
+}
+
+/* Removed Keyframes for the initial animation */
+/* @keyframes scaleInBounce { ... } */
+
+
+/* Estilo para el nuevo título */
+h2 {
+    color: white; /* Color del texto */
+    font-size: 3em; /* Tamaño de fuente más grande */
+    font-family: 'Orbitron', sans-serif; /* Aplicar tipografía futurista */
+    /* Añadimos un resplandor de texto similar al de la imagen */
+    text-shadow: 0 0 10px rgba(160, 32, 240, 0.8);
+    /* Añadimos margen superior para separarlo de la imagen */
+    margin-top: 15px; /* Add a small margin above the title */
+    margin-bottom: 0; /* Remove default margin-bottom */
+     /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Estilo para el elemento spoiler */
+.spoiler {
+    margin-top: 20px; /* Space between title and spoiler */
+    padding: 10px 20px;
+    background-color: rgba(100, 100, 100, 0.8); /* Grey background for spoiler */
+    color: rgba(255, 255, 255, 0.6); /* Make text more visible initially */
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+    user-select: none; /* Prevent selecting the text */
+     /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.spoiler:hover {
+    background-color: rgba(120, 120, 120, 0.9); /* Slightly lighter grey on hover */
+    color: rgba(255, 255, 255, 0.8); /* Make text more visible on hover */
+}
+
+.spoiler:active {
+    background-color: rgba(80, 80, 80, 1); /* Darker grey when clicked */
+    color: white; /* Fully white text when active */
+}
+
+/* Class to trigger the entry animation */
+.animated {
+    opacity: 1; /* Animate to full visibility */
+    transform: translateY(0); /* Animate to original vertical position */
+    /* Remove !important */
+}
+
+/* Table toggle button style */
+.table-toggle {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(100, 100, 100, 0.8);
+    color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+    user-select: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.table-toggle:hover {
+    background-color: rgba(120, 120, 120, 0.9);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.table-toggle:active {
+    background-color: rgba(80, 80, 80, 1);
+    color: white;
+}
+
+/* Table container styles */
+.table-container {
+    display: none;
+    max-width: 90%;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
+    border: 1px solid rgba(160, 32, 240, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.table-container h3 {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-top: 0;
+    text-shadow: 0 0 8px rgba(160, 32, 240, 0.6);
+}
+
+/* Table styles */
+.codes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    border: 1px solid rgba(160, 32, 240, 0.5);
+}
+
+.codes-table th, .codes-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgba(160, 32, 240, 0.3);
+}
+
+.codes-table th {
+    background-color: rgba(160, 32, 240, 0.3);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(160, 32, 240, 0.8);
+}
+
+.codes-table tr:nth-child(even) {
+    background-color: rgba(160, 32, 240, 0.1);
+}
+
+.codes-table tr:hover {
+    background-color: rgba(160, 32, 240, 0.2);
+}
+
+.codes-table td:nth-child(3) {
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(160, 32, 240, 0.6);
+}
+
+/* Highlight current hour's row */
+.highlight-row {
+    background-color: rgba(160, 32, 240, 0.4) !important;
+}
+
+/* Table instructions styles */
+.table-instructions {
+    color: white;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.table-instructions h4 {
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(160, 32, 240, 0.6);
+}
+
+.table-instructions ol {
+    padding-left: 25px;
+}
+
+.table-instructions li {
+    margin-bottom: 8px;
+}
+
+/* Make table responsive */
+@media screen and (max-width: 768px) {
+    .table-container {
+        max-width: 95%;
+        padding: 10px;
+        overflow-x: auto;
+    }
+    
+    .codes-table {
+        font-size: 0.8em;
+    }
+    
+    .codes-table th, .codes-table td {
+        padding: 8px 5px;
+    }
+}
+
+/* Estilo para el contenedor del código (inicialmente oculto) */
+.code-container {
+    display: none; /* Initially hidden */
+    align-items: center; /* Align vertically */
+    margin-top: 20px; /* Space between title and container */
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    border-radius: 8px; /* Rounded corners for the container */
+    padding: 10px; /* Padding inside the container */
+    /* Cambiado de sombra azul neon a sombra morada neon */
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.5); /* Purple neon glow */
+    /* Cambiado de borde azul neon a borde morado neon */
+    border: 1px solid rgba(160, 32, 240, 0.3); /* Subtle purple border */
+    /* Added transition for reveal */
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1; /* Default opacity when visible */
+}
+
+/* Estilo para el input del código */
+#code-input {
+    flex-grow: 1; /* Allow input to take available space */
+    padding: 10px;
+    margin-right: 10px; /* Space between input and button */
+    border: none; /* Remove default border */
+    background-color: transparent; /* No background */
+    color: white; /* Change text color to white */
+    font-size: 1.5em; /* Font size for the code */
+    font-family: 'Orbitron', sans-serif; /* Neon font */
+    /* Cambiado de resplandor azul neon a resplandor morada neon */
+    text-shadow: 0 0 8px rgba(160, 32, 240, 0.6); /* Purple neon glow */
+    letter-spacing: 1px; /* Slightly reduced letter spacing */
+    outline: none; /* Remove outline on focus */
+    caret-color: transparent; /* Hide blinking cursor */
+    user-select: all; /* Allow easy selection */
+    cursor: text; /* Indicate it's selectable text */
+    width: 280px; /* Adjusted width to fit the code more closely */
+    min-width: 0; /* Allow it to shrink */
+}
+
+/* Estilo para el botón de copiar */
+#copy-button {
+    padding: 10px 15px;
+    background-color: #A020F0; /* Purple neon background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Indicate clickable */
+    font-size: 1em;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase; /* Uppercase text */
+    box-shadow: 0 0 8px rgba(160, 32, 240, 0.6); /* Purple neon glow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#copy-button:hover {
+    background-color: #B030F0; /* Lighter purple on hover */
+    box-shadow: 0 0 12px rgba(160, 32, 240, 0.9); /* More intense glow on hover */
+}
+
+#copy-button:active {
+    background-color: #8A2BE2; /* Darker purple when clicked */
+    box-shadow: 0 0 5px rgba(160, 32, 240, 0.4); /* Subtle glow when active */
+}
+
+/* Styles for UTC clock */
+.utc-clock {
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(160, 32, 240, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* UTC note style */
+.utc-note {
+    font-family: 'Arial', sans-serif;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.utc-note a {
+    color: #A020F0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.utc-note a:hover {
+    color: #B030F0;
+    text-decoration: underline;
+}
